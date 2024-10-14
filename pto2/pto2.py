@@ -18,3 +18,6 @@ df_final = pd.merge(df_merged, condicion_tributaria, on="CUIT", how="inner")
 
 # 3. Listar los primeros 50 registros resultantes
 print(df_final.head(50))  # Imprime los primeros 50 registros
+
+# 4. Guardar el DataFrame final en un archivo Excel
+df_final.to_excel("datos_vinculados.xlsx", index=False)  # Guarda el DataFrame en un archivo Excel

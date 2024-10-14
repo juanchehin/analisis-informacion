@@ -4,7 +4,7 @@
 import pandas as pd
 
 # Cargar los datos de los socios (cambia la ruta del archivo según sea necesario)
-registro_sociedades = pd.read_csv("registro-nacional-sociedades-202409.csv")
+registro_sociedades = pd.read_csv("datos_vinculados.csv")
 
 # Agrupar por CUIT_socio (identificador del socio) y contar cuántas entidades tiene asociadas
 entidades_por_socio = registro_sociedades.groupby('CUIT_socio').size().reset_index(name='Cantidad_de_Entidades')
