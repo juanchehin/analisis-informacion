@@ -1,3 +1,8 @@
+# Vincular todas las tablas descargadas respecto a las entidades (sociedades)
+# utilizando claves comunes como el nombre de la entidad o el CUIT.
+#Listar al menos 50 registros resultantes de esta vinculación.
+
+
 import pandas as pd
 
 # Cargar los archivos descargados
