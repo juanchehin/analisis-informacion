@@ -10,14 +10,14 @@ registro_sociedades = pd.read_csv("C:/dev/analis_info/registro-nacional-sociedad
 igj = pd.read_csv("C:/dev/analis_info/igj-entidades-202409.csv")
 condicion_tributaria = pd.read_csv("C:/dev/analis_info/SELE-SAL-CONSTA.csv")
 
-# 1. Unir la primera tabla (Registro Nacional de Sociedades) con la segunda (IGJ) usando CUIT
+# unir la primera tabla con la 2da usando CUIT
 df_merged = pd.merge(registro_sociedades, igj, on="CUIT", how="inner")
 
-# 2. Luego, unir la tabla resultante con la tercera tabla (Condición Tributaria)
+# unir la tabla resultante con la 3er tabla
 df_final = pd.merge(df_merged, condicion_tributaria, on="CUIT", how="inner")
 
-# 3. Listar los primeros 50 registros resultantes
-print(df_final.head(50))  # Imprime los primeros 50 registros
+# listar los primeros 50 registros
+print(df_final.head(50))
 
-# 4. Guardar el DataFrame final en un archivo Excel
-df_final.to_excel("datos_vinculados.xlsx", index=False)  # Guarda el DataFrame en un archivo Excel
+# guardar el DataFrame en un excel
+df_final.to_excel("datos_vinculados.xlsx", index=False)
