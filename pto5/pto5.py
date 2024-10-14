@@ -4,7 +4,7 @@
 import pandas as pd
 
 # Cargar los datos de las entidades (cambia la ruta del archivo según tu sistema)
-entidades = pd.read_csv("datos_vinculados.csv")
+entidades = pd.read_csv("C:/dev/analis_info/datos_vinculados.csv")
 
 # Concatenar las columnas de dirección fiscal en una sola columna para simplificar el análisis
 entidades['direccion_fiscal'] = (entidades['dom_fiscal_calle'].astype(str) + " " +

@@ -6,9 +6,9 @@
 import pandas as pd
 
 # Cargar los archivos descargados
-registro_sociedades = pd.read_csv("registro-nacional-sociedades-202409.csv")
-igj = pd.read_csv("igj-entidades-202409.csv")
-condicion_tributaria = pd.read_csv("SELE-SAL-CONSTA.csv")
+registro_sociedades = pd.read_csv("C:/dev/analis_info/registro-nacional-sociedades-202409.csv")
+igj = pd.read_csv("C:/dev/analis_info/igj-entidades-202409.csv")
+condicion_tributaria = pd.read_csv("C:/dev/analis_info/SELE-SAL-CONSTA.csv")
 
 # 1. Unir la primera tabla (Registro Nacional de Sociedades) con la segunda (IGJ) usando CUIT
 df_merged = pd.merge(registro_sociedades, igj, on="CUIT", how="inner")
