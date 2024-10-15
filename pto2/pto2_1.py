@@ -4,19 +4,27 @@
 
 import pandas as pd
 
-# cargar los archivos descargados
-registro_sociedades = pd.read_csv("C:/dev/analisis-informacion/files/registro-nacional-sociedades-202409.csv")
-igj = pd.read_csv("C:/dev/analisis-informacion/files/igj-entidades-202409.csv")
-condicion_tributaria = pd.read_csv("C:/dev/analisis-informacion/files/SELE-SAL-CONSTA.csv")
+# ========================================================
+# *** union de archivos (previo tratamiento con openrefine) ***
+# ========================================================
+# Cargar los tres archivos Excel
+df1 = pd.read_excel('C:/dev/analisis-informacion/files/SELE-SAL-CONSTA-recortado-csv.xlsx')
+df2 = pd.read_excel('C:/dev/analisis-informacion/files/igj-entidades-202408-csv.xlsx')
+df3 = pd.read_excel('C:/dev/analisis-informacion/files/registro-nacional-sociedades-202409-recortado-csv.xlsx')
 
-# unir la primera tabla con la segunda usando cuit
-df_merged = pd.merge(registro_sociedades, igj, on="cuit", how="inner")
 
-# unir la tabla resultante con la tercera tabla
-df_final = pd.merge(df_merged, condicion_tributaria, on="cuit", how="inner")
+df1['cuit'] = df1['cuit'].astype(str)
+df2['cuit'] = df2['cuit'].astype(str)
+df3['cuit'] = df3['cuit'].astype(str)
+
+# Unir
+merged_df = pd.merge(df1, df2, on='cuit', how='outer')
+merged_df = pd.merge(merged_df, df3, on='cuit', how='outer')
+
+# guardar el resultado en un nuevo archivo Excel
+merged_df.to_excel('C:/dev/analisis-informacion/files/archivos_unidos.xlsx', index=False)
+
+print("Archivos unidos correctamente.")
 
 # listar
-print(df_final.head(50))  # Imprime los primeros 50 registros
-
-# guardar el archivo
-df_final.to_excel("C:/dev/analisis-informacion/files/datos_vinculados.xlsx", index=False)
+print(merged_df.head(50))
