@@ -24,7 +24,5 @@ merged_df = pd.merge(merged_df, df3, on='cuit', how='outer')
 # guardar el resultado en un nuevo archivo Excel
 merged_df.to_excel('C:/dev/analisis-informacion/files/archivos_unidos.xlsx', index=False)
 
-print("Archivos unidos correctamente.")
-
 # listar
 print(merged_df.head(50))
