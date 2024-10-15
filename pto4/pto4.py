@@ -4,7 +4,7 @@
 import pandas as pd
 
 # cargar los datos
-registro_sociedades = pd.read_csv("C:/dev/analisis-informacion/files/archivos_unidos.xlsx")
+registro_sociedades = pd.read_excel("C:/dev/analisis-informacion/files/archivos_unidos.xlsx")
 
 # agrupar por cuit del socio y contar cuantas entidades tiene asociadas
 entidades_por_socio = registro_sociedades.groupby('cuit').size().reset_index(name='cantidad_entidades')
