@@ -6,9 +6,9 @@
 import pandas as pd
 
 # Cargar los archivos descargados
-registro_sociedades = pd.read_csv("C:/dev/analis_info/registro-nacional-sociedades-202409.csv")
-igj = pd.read_csv("C:/dev/analis_info/igj-entidades-202409.csv")
-condicion_tributaria = pd.read_csv("C:/dev/analis_info/SELE-SAL-CONSTA.csv")
+registro_sociedades = pd.read_csv("C:/dev/analisis-informacion/files/registro-nacional-sociedades-202409_recortado.csv")
+igj = pd.read_csv("C:/dev/analisis-informacion/files/igj-entidades-202409_recortado.csv")
+condicion_tributaria = pd.read_csv("C:/dev/analisis-informacion/files/SELE-SAL-CONSTA_recortado.csv")
 
 # unir la primera tabla con la 2da usando CUIT
 df_merged = pd.merge(registro_sociedades, igj, on="CUIT", how="inner")
@@ -20,4 +20,4 @@ df_final = pd.merge(df_merged, condicion_tributaria, on="CUIT", how="inner")
 print(df_final.head(50))
 
 # guardar el DataFrame en un excel
-df_final.to_excel("datos_vinculados.xlsx", index=False)
+df_final.to_excel("C:/dev/analisis-informacion/files/datos_vinculados.xlsx", index=False)
